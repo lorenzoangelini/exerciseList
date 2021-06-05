@@ -9,4 +9,8 @@ export const fetchHotelsSuccess = createAction(
 
 export const fetchHotelsLoading = createAction(
     'hotels/FETCH_HOTELES_LOADING'
-)();
+)<boolean>();
+
+export const fetchHotelsError = createAction(
+    'hotels/FETCH_HOTELES_ERROR'
+   )<any>();
