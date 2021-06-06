@@ -2,7 +2,7 @@ import { ActionType, createReducer } from 'typesafe-actions'
 import * as actions from '../actions'
 export type State = {
     isLoading: boolean
-    products: any;
+    products: HotelsObject[];
 }
 const initialState: State = {
     isLoading: false,
@@ -26,3 +26,36 @@ const reducer = createReducer<State, Types>(initialState).handleAction(
 )
 
 export default reducer;
+
+
+export type HotelsObject = {
+    id: number;
+    name: string;
+    location: Location;
+    stars: number;
+    checkIn: Hours;
+    checkOut: Hours;
+    contact: Contact;
+    gallery: string[];
+    userRating: number;
+    price: number;
+    currency: string;
+
+}
+
+export type Location = {
+    city: string;
+    address: string;
+    latitude: number;
+    longitude: number;
+}
+
+export type Hours = {
+    from: string;
+    to: string;
+}
+
+export type Contact = {
+    phoneNumber: string;
+    email: string;
+}

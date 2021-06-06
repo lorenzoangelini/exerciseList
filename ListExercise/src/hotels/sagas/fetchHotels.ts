@@ -10,7 +10,6 @@ function* fetchHotelsRequestSaga(
     try{
         yield put(actions.fetchHotelsLoading(true))
         const response: any = yield call(apiFetchHotels)
-        console.error(response);
         yield put(actions.fetchHotelsSuccess(response))
         yield put(actions.fetchHotelsLoading(false))
     }catch(e){
