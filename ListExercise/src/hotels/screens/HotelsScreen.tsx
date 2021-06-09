@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as actions from '../actions'
 import selectors from '../selectors'
 
-const AVATAR_SIZE = 70;
+const AVATAR_SIZE = 100;
 const SPACING = 20;
 const ITEM_SIZE = AVATAR_SIZE + SPACING * 3;
 
@@ -25,6 +25,8 @@ const HotelsScreen: React.FC = () => {
                 source={{ uri: 'https://images.pexels.com/photos/4622769/pexels-photo-4622769.jpeg?cs=srgb&dl=pexels-karolina-grabowska-4622769.jpg&fm=jpg' }}
                 blurRadius={30}
                 style={StyleSheet.absoluteFill}></Image>
+
+                
             <Animated.FlatList
             onScroll={Animated.event(
                 [{nativeEvent: {contentOffset: {y: scrollY}}}],
@@ -69,10 +71,12 @@ const HotelsScreen: React.FC = () => {
                         <Image
                             source={{ uri: item?.gallery[0] }}
                             style={{ height: AVATAR_SIZE, width: AVATAR_SIZE, borderRadius: AVATAR_SIZE }}></Image>
-                        <View>
-                            <Text style={{ fontSize: 14, fontWeight: '700' }}>{item.name}</Text>
-                            <Text style={{ fontSize: 10 }}>{item.contact.email}</Text>
-                            <Text style={{ fontSize: 10 }}>{item.price}</Text>
+                        <View style={{marginLeft: SPACING,  width: "65%"}}>
+                            <Text style={{ fontSize: 15, fontWeight: '700' }}>{item.name}</Text>
+                            <View style={{flexDirection: 'row', paddingTop:30, justifyContent: 'space-between'}}>
+                            <Text style={{ fontSize: 20 }}>{item.price + ' '+ item.currency}</Text>
+                            <Text style={{ fontSize: 20,  }}>{item.stars +'*'}</Text>
+                            </View>
                         </View>
                     </Animated.View>
                 }}
